@@ -23,6 +23,12 @@ declare(strict_types=1);
 
 return [
     // ============================================================================
+    // RUTA RAÍZ - Información de la API
+    // ============================================================================
+    ['GET', '/', 'ApiInfoController', 'index'],
+    ['GET', '/api', 'ApiInfoController', 'index'],
+
+    // ============================================================================
     // ENDPOINTS PÚBLICOS (SIN AUTENTICACIÓN) - Para estudiantes
     // ============================================================================
     ['GET', '/api/public/videos', 'PublicController', 'getVideos'],
