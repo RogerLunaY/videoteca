@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Entry Point - API REST
@@ -9,8 +9,6 @@
  * @author Roger Omar Luna Yujra
  * @version 1.0
  */
-
-declare(strict_types=1);
 
 // Autoloader de clases
 spl_autoload_register(function ($class) {

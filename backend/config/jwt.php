@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Configuración de JWT (JSON Web Tokens)
@@ -9,8 +9,6 @@
  * @author Roger Omar Luna Yujra
  * @version 1.0
  */
-
-declare(strict_types=1);
 
 namespace Config;
 

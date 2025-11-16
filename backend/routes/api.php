@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Sistema de Rutas API
@@ -9,8 +9,6 @@
  * @author Roger Omar Luna Yujra
  * @version 1.0
  */
-
-declare(strict_types=1);
 
 /**
  * Define las rutas de la API y las asocia con sus controladores

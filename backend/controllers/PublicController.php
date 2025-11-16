@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Controlador Público
@@ -10,8 +10,6 @@
  * @author Roger Omar Luna Yujra
  * @version 2.0
  */
-
-declare(strict_types=1);
 
 namespace Controllers;
 

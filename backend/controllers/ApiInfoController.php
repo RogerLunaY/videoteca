@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Controlador de Información de la API
@@ -9,8 +9,6 @@
  * @author Roger Omar Luna Yujra
  * @version 2.0
  */
-
-declare(strict_types=1);
 
 namespace Controllers;
 
