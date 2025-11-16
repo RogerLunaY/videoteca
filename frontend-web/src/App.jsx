@@ -6,10 +6,13 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 
-// Componentes
+// Páginas públicas
+import Home from './pages/Home';
+import Watch from './pages/Watch';
+
+// Componentes protegidos
 import Navbar from './components/Common/Navbar';
 import Login from './components/Auth/Login';
-import Register from './components/Auth/Register';
 import Dashboard from './components/Dashboard/Dashboard';
 import VideoPlayer from './components/Video/VideoPlayer';
 
@@ -47,14 +50,17 @@ function AppRoutes() {
 
   return (
     <Routes>
-      {/* Rutas públicas */}
+      {/* Rutas públicas (Estudiantes - sin login) */}
+      <Route path="/" element={<Home />} />
+      <Route path="/watch/:id" element={<Watch />} />
+
+      {/* Login para docentes */}
       <Route
         path="/login"
         element={isAuthenticated() ? <Navigate to="/dashboard" /> : <Login />}
       />
-      <Route path="/register" element={<Register />} />
 
-      {/* Rutas protegidas */}
+      {/* Rutas protegidas (Solo docentes y admin) */}
       <Route
         path="/dashboard"
         element={
@@ -67,29 +73,17 @@ function AppRoutes() {
       />
 
       <Route
-        path="/video/:id"
+        path="/admin/:path"
         element={
           <ProtectedRoute>
             <MainLayout>
-              <VideoPlayer />
+              <Dashboard />
             </MainLayout>
           </ProtectedRoute>
         }
       />
 
-      {/* Redirección por defecto */}
-      <Route
-        path="/"
-        element={
-          isAuthenticated() ? (
-            <Navigate to="/dashboard" />
-          ) : (
-            <Navigate to="/login" />
-          )
-        }
-      />
-
-      {/* 404 */}
+      {/* 404 - Redirigir al inicio */}
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

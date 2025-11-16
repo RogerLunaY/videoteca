@@ -23,10 +23,20 @@ declare(strict_types=1);
 
 return [
     // ============================================================================
-    // AUTENTICACIÓN
+    // ENDPOINTS PÚBLICOS (SIN AUTENTICACIÓN) - Para estudiantes
+    // ============================================================================
+    ['GET', '/api/public/videos', 'PublicController', 'getVideos'],
+    ['GET', '/api/public/videos/{id}', 'PublicController', 'getVideoById'],
+    ['GET', '/api/public/videos/{id}/stream', 'PublicController', 'streamVideo'],
+    ['POST', '/api/public/videos/{id}/view', 'PublicController', 'registrarVisualizacion'],
+    ['GET', '/api/public/videos/search', 'PublicController', 'buscarVideos'],
+    ['GET', '/api/public/grados', 'PublicController', 'getGrados'],
+    ['GET', '/api/public/materias', 'PublicController', 'getMaterias'],
+
+    // ============================================================================
+    // AUTENTICACIÓN (Solo para Docentes y Administradores)
     // ============================================================================
     ['POST', '/api/auth/login', 'AuthController', 'login'],
-    ['POST', '/api/auth/register', 'AuthController', 'register'],
     ['POST', '/api/auth/logout', 'AuthController', 'logout'],
     ['POST', '/api/auth/refresh-token', 'AuthController', 'refreshToken'],
     ['GET', '/api/auth/me', 'AuthController', 'me'],
