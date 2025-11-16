@@ -3,7 +3,7 @@
 -- Unidad Educativa San Francisco Xavier
 -- ============================================================================
 
-USE videoteca_educativa;
+USE videoteca;
 
 -- ============================================================================
 -- INSERTAR ROLES

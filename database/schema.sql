@@ -7,9 +7,9 @@
 -- ============================================================================
 
 -- Crear base de datos
-DROP DATABASE IF EXISTS videoteca_educativa;
-CREATE DATABASE videoteca_educativa CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE videoteca_educativa;
+DROP DATABASE IF EXISTS videoteca;
+CREATE DATABASE videoteca CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE videoteca;
 
 -- ============================================================================
 -- TABLAS PRINCIPALES
@@ -642,16 +642,16 @@ CREATE INDEX idx_favoritos_usuario_fecha ON favoritos(usuario_id, fecha_agregado
 SELECT 'Base de datos creada exitosamente' AS mensaje;
 SELECT 'Total de tablas creadas: ' AS info, COUNT(*) AS cantidad
 FROM information_schema.tables
-WHERE table_schema = 'videoteca_educativa';
+WHERE table_schema = 'videoteca';
 
 SELECT 'Total de triggers creados: ' AS info, COUNT(*) AS cantidad
 FROM information_schema.triggers
-WHERE trigger_schema = 'videoteca_educativa';
+WHERE trigger_schema = 'videoteca';
 
 SELECT 'Total de vistas creadas: ' AS info, COUNT(*) AS cantidad
 FROM information_schema.views
-WHERE table_schema = 'videoteca_educativa';
+WHERE table_schema = 'videoteca';
 
 SELECT 'Total de procedimientos creados: ' AS info, COUNT(*) AS cantidad
 FROM information_schema.routines
-WHERE routine_schema = 'videoteca_educativa' AND routine_type = 'PROCEDURE';
+WHERE routine_schema = 'videoteca' AND routine_type = 'PROCEDURE';

@@ -21,13 +21,13 @@
 -- ============================================================================
 
 -- Eliminar base de datos si existe (CUIDADO: esto borra todo)
-DROP DATABASE IF EXISTS videoteca_educativa;
+DROP DATABASE IF EXISTS videoteca;
 
 -- Crear base de datos
-CREATE DATABASE videoteca_educativa CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE videoteca CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- Usar la base de datos
-USE videoteca_educativa;
+USE videoteca;
 
 -- Mostrar mensaje de inicio
 SELECT 'Iniciando instalación de la base de datos...' AS mensaje;
@@ -54,7 +54,7 @@ SELECT 'Verificando instalación...' AS mensaje;
 
 SELECT 'Tablas creadas:' AS info, COUNT(*) AS cantidad
 FROM information_schema.tables
-WHERE table_schema = 'videoteca_educativa';
+WHERE table_schema = 'videoteca';
 
 SELECT 'Usuarios creados:' AS info, COUNT(*) AS cantidad FROM usuarios;
 SELECT 'Videos creados:' AS info, COUNT(*) AS cantidad FROM videos;
