@@ -15,8 +15,47 @@ declare(strict_types=1);
 // Autoloader de clases
 spl_autoload_register(function ($class) {
     $baseDir = __DIR__ . '/';
-    $file = $baseDir . str_replace('\\', '/', $class) . '.php';
 
+    // Mapeo específico para clases con nombres de archivo personalizados
+    $classMap = [
+        'Config\\CORSConfig' => 'config/cors.php',
+        'Config\\JWTConfig' => 'config/jwt.php',
+        'Config\\Database' => 'config/database.php',
+    ];
+
+    // Si la clase está en el mapa, cargarla directamente
+    if (isset($classMap[$class])) {
+        $file = $baseDir . $classMap[$class];
+        if (file_exists($file)) {
+            require_once $file;
+            return;
+        }
+    }
+
+    // Mapeo de namespaces a directorios (para el resto de las clases)
+    $namespaceMap = [
+        'Config\\' => 'config/',
+        'Controllers\\' => 'controllers/',
+        'Models\\' => 'models/',
+        'Middleware\\' => 'middleware/',
+        'Utils\\' => 'utils/',
+    ];
+
+    // Buscar el namespace en el mapa
+    foreach ($namespaceMap as $namespace => $directory) {
+        if (strpos($class, $namespace) === 0) {
+            $className = substr($class, strlen($namespace));
+            $file = $baseDir . $directory . $className . '.php';
+
+            if (file_exists($file)) {
+                require_once $file;
+                return;
+            }
+        }
+    }
+
+    // Fallback al método original
+    $file = $baseDir . str_replace('\\', '/', $class) . '.php';
     if (file_exists($file)) {
         require_once $file;
     }
