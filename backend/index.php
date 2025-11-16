@@ -93,6 +93,26 @@ Config\CORSConfig::applyAll();
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
+// Normalizar URI: remover el prefijo del directorio base
+// Ej: /videoteca-backend/api/videos -> /api/videos
+$scriptName = $_SERVER['SCRIPT_NAME']; // Ej: /videoteca-backend/index.php
+$basePath = dirname($scriptName); // Ej: /videoteca-backend
+
+// Remover el prefijo del directorio base del URI
+if ($basePath !== '/' && strpos($uri, $basePath) === 0) {
+    $uri = substr($uri, strlen($basePath));
+}
+
+// Si el URI está vacío o es solo '/', asegurarse de que sea '/'
+if (empty($uri) || $uri === '') {
+    $uri = '/';
+}
+
+// Remover trailing slash excepto para la raíz
+if ($uri !== '/' && substr($uri, -1) === '/') {
+    $uri = rtrim($uri, '/');
+}
+
 // Cargar rutas
 $routes = require __DIR__ . '/routes/api.php';
 
